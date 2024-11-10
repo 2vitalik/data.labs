@@ -128,6 +128,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+MONGO_CLUSTER = None  # Should be set in `local_settings.py` file
+
+
 try:
     from project.local_settings import *
 except ImportError:
