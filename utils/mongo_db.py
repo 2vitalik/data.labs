@@ -33,3 +33,16 @@ class GroupsTable:
 
 
 db = MongoDB()
+
+
+if __name__ == '__main__':
+    groups = [
+        'ПЗПІ-24',
+        'ПЗПІ-23',
+        'ПЗПІ-22',
+        'ПЗПІ-21',
+        'ІПЗм-24',
+        'ІПЗм-23',
+    ]
+    for group in groups:
+        db.groups.add_group(group)
