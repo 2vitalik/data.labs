@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from links.views import IndexView
+from links.views import IndexView, GroupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', IndexView.as_view(), name='index'),
+    path('links/<key>/', GroupView.as_view(), name='index'),
 ]
