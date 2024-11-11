@@ -54,7 +54,7 @@
                 {% for data in category_data %}
                     <tr>
                         <td style="width: 40%;">
-                            <label for="{{ subject }}|{{ category }}|{{ data.title }}">
+                            <label for="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}">
                                 {{ data.title }}
                             </label>
                             <small>{{ data.teacher|safe }}</small>
@@ -64,7 +64,7 @@
                                 {{ data.links }}
                             {% else %}
                                 <div class="form-group">
-                                    <textarea name="{{ subject }}|{{ category }}|{{ data.title }}" id="{{ subject }}|{{ category }}|{{ data.title }}"
+                                    <textarea name="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}" id="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}"
                                               class="form-control" rows="2" placeholder="Введіть посилання тут...">{{ data.links }}</textarea>
                                 </div>
                             {% endif %}
