@@ -56,8 +56,18 @@ def title_key(entry):
     return priority, group_number, title
 
 
+def subject_key(pair):
+    subject = pair[0]
+    if subject in ['ІМ', 'ІМ1п', 'ІМ2п', 'ФВ']:
+        return 3, subject
+    if subject.startswith('*'):
+        return 2, subject
+    return 1, subject
+
+
 def prepare_entries(entries):
     subjects = create_dict(entries)
+    subjects = dict(sorted(subjects.items(), key=subject_key))
 
     for subject, data in subjects.items():
         for category in data.keys():
