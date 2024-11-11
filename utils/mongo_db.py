@@ -30,7 +30,8 @@ class GroupsTable:
         })
 
     def get(self, key):
-        return self.collection.find_one({'key': key}).get('group')
+        group = self.collection.find_one({'key': key})
+        return group.get('semester'), group.get('prefix')
 
 
 db = MongoDB()
