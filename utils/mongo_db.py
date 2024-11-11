@@ -11,6 +11,7 @@ class MongoDB:
         self.client = MongoClient(settings.MONGO_CLUSTER)
         self.db = self.client['nure_links']
         self.groups = GroupsTable(self.db['groups'])
+        self.entries = EntriesTable(self.db['entries'])
 
 
 class GroupsTable:
@@ -32,6 +33,20 @@ class GroupsTable:
     def get(self, key):
         group = self.collection.find_one({'key': key})
         return group.get('semester'), group.get('prefix')
+
+
+class EntriesTable:
+    def __init__(self, collection):
+        self.collection = collection
+
+    def add_entries(self, entries):
+        self.collection.insert_many(entries)
+
+    def get_entries(self, semester, prefix):
+        return self.collection.find({
+            'prefix': prefix,
+            'semester': semester,
+        })
 
 
 db = MongoDB()
