@@ -5,6 +5,7 @@ from pprint import pprint
 
 def parse_subjects(prefix, subjects_text):
     subjects = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
+    subjects_names = {}
 
     for subject_line in subjects_text.split('\n'):
         m = re.fullmatch(r'(?P<short>[^\t]+)\t(?P<long>.+) : '
@@ -13,6 +14,8 @@ def parse_subjects(prefix, subjects_text):
             raise Exception(f'Wrong `subject_line` format: "{subject_line}"')
 
         short, long, subject_data = m.groups()
+        if short not in subjects_names:
+            subjects_names[short] = long
         if short in ['ФВ']:
             subjects[short]['']['Пз'].update(range(1, 12))
             continue  # skip because no teachers there
@@ -27,7 +30,7 @@ def parse_subjects(prefix, subjects_text):
             process_part(subjects, prefix, short, long, part)
 
     # pprint(subjects)
-    return subjects
+    return subjects, subjects_names
 
 
 def process_part(subjects, prefix, short, long, part):
