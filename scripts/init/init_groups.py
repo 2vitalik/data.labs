@@ -12,7 +12,7 @@ def init_groups():
         'ІПЗм-23',
     ]
     for group in groups:
-        db.groups.add_group(group)
+        db.groups.add(group)
 
 
 if __name__ == '__main__':

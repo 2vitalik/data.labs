@@ -21,7 +21,7 @@ class GroupsTable:
         characters = string.ascii_letters + string.digits
         return ''.join(secrets.choice(characters) for _ in range(16))
 
-    def add_group(self, prefix):
+    def add(self, prefix):
         self.collection.insert_one({
             'prefix': prefix,
             'key': self.key(),
