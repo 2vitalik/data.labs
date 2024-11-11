@@ -16,15 +16,16 @@ class LinksBaseView(TemplateView):
         context = super().get_context_data(**kwargs)
         key = self.kwargs['key']
         semester, prefix = db.groups.get(key)
-        subjects = prepare_entries(db.entries.get(semester, prefix))
-        subjects_names = db.subjects.get(semester, prefix)
-        context.update({
-            'key': key,
-            'semester': semester,
-            'prefix': prefix,
-            'subjects': subjects,
-            'subjects_names': subjects_names,
-        })
+        if prefix:
+            subjects = prepare_entries(db.entries.get(semester, prefix))
+            subjects_names = db.subjects.get(semester, prefix)
+            context.update({
+                'key': key,
+                'semester': semester,
+                'prefix': prefix,
+                'subjects': subjects,
+                'subjects_names': subjects_names,
+            })
         return context
 
 

@@ -34,6 +34,8 @@ class GroupsTable:
 
     def get(self, key):
         group = self.collection.find_one({'key': key})
+        if not group:
+            return None, None
         return group.get('semester'), group.get('prefix')
 
 
