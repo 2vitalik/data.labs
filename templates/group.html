@@ -1,25 +1,51 @@
 {% extends 'base.html' %}
 
+{% block css %}
+<style>
+    .key {
+        margin: 0;
+        padding: 0;
+        line-height: 0.8;
+    }
+    small {
+        margin: 0;
+        padding: 0;
+        line-height: 0.8;
+        color: #bbb;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-    <h1 class="h3">Група {{ group }}</h1>
+    <h1 class="h3 mb-4">Потік {{ group }}</h1>
 
-    <h2 class="h5">Предмет 1</h2>
+    <h2 class="h5 mb-3">Предмет 1</h2>
 
-    <h3 class="h6">Англійський поток</h3>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>*</th>
-                <td>https://dl.nure.ua/link0</td>
-            </tr>
-            <tr>
-                <th>лк</th>
-                <td>https://meet.google.com/link1</td>
-            </tr>
-            <tr>
-                <th>пз</th>
-                <td>https://meet.google.com/link2</td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="margin-left: 10px;">
+        <h3 class="h6">Англійський потік</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="key">Загальне</div>
+                    </td>
+                    <td>https://dl.nure.ua/link0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="key">Лекції</div>
+                        <small>Іванов І.І.</small>
+                    </td>
+                    <td>https://meet.google.com/link1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="key">ПЗ (1-3)</div>
+                        <small>Петров П.П.</small>
+                    </td>
+                    <td>https://meet.google.com/link2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
