@@ -29,7 +29,7 @@ class GroupsTable:
             'created_at': datetime.now(),
         })
 
-    def get_group(self, key):
+    def get(self, key):
         return self.collection.find_one({'key': key}).get('group')
 
 
