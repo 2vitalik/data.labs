@@ -3,7 +3,7 @@ from utils.mongo_db import db
 
 
 def init_groups():
-    groups = [
+    prefixes = [
         'ПЗПІ-24',
         'ПЗПІ-23',
         'ПЗПІ-22',
@@ -11,8 +11,8 @@ def init_groups():
         'ІПЗм-24',
         'ІПЗм-23',
     ]
-    for group in groups:
-        db.groups.add(group)
+    for prefix in prefixes:
+        db.groups.add(prefix)
 
 
 if __name__ == '__main__':
