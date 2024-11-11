@@ -15,9 +15,11 @@ class GroupView(TemplateView):
         context = super().get_context_data(**kwargs)
         semester, prefix = db.groups.get(self.kwargs['key'])
         subjects = prepare_entries(db.entries.get(semester, prefix))
+        subjects_names = db.subjects.get(semester, prefix)
         context.update({
             'semester': semester,
             'prefix': prefix,
             'subjects': subjects,
+            'subjects_names': subjects_names,
         })
         return context
