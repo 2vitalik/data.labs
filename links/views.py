@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 
 from src.entries_tree import prepare_entries
@@ -37,6 +38,12 @@ class LinksView(LinksBaseView):
 
 
 class LinksEditView(LinksBaseView):
+    def post(self, request, *args, **kwargs):
+        key = self.kwargs['key']
+        semester, prefix = db.groups.get(key)
+        db.entries.edit(semester, prefix, request.POST)
+        return redirect('links', key=self.kwargs['key'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
