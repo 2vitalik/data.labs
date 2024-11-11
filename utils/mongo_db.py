@@ -10,7 +10,7 @@ class MongoDB:
     def __init__(self):
         self.client = MongoClient(settings.MONGO_CLUSTER)
         self.db = self.client['nure_links']
-        self.groups = GroupsTable(self.db['nure_groups'])
+        self.groups = GroupsTable(self.db['groups'])
 
 
 class GroupsTable:
