@@ -17,10 +17,10 @@ def init_entries():
             create_entries(prefix, subjects, 'eng',
                            f'1-{split}', lambda x: 1 <= x <= split)
             create_entries(prefix, subjects, 'ukr',
-                           f'{split+1}-{total}', lambda x: x > split)
+                           f'{split+1}-{total}', lambda x: split < x <= total)
         else:
             create_entries(prefix, subjects, 'core',
-                           f'1-{total}', lambda x: x > 0)
+                           f'1-{total}', lambda x: 1 <= x <= total)
 
         create_entries(prefix, subjects, 'alt',
                        f'0', lambda x: x == 0)
