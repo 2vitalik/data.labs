@@ -23,6 +23,12 @@
         {% endif %}
     </h1>
 
+    {% if mode == 'edit' %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'includes/buttons.html' %}
+    {% endif %}
+
     {% for subject, subject_data in subjects.items %}
         <h2 class="h5 mb-3 pt-3">
             📚 <b>{{ subject }}</b>
@@ -70,4 +76,9 @@
         {% endfor %}
         </div>
     {% endfor %}
+
+    {% if mode == 'edit' %}
+        {% include 'includes/buttons.html' %}
+    </form>
+    {% endif %}
 {% endblock %}
