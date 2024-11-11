@@ -1,4 +1,4 @@
-import random
+import secrets
 import string
 from datetime import datetime
 
@@ -19,7 +19,7 @@ class GroupsTable:
 
     def key(self):
         characters = string.ascii_letters + string.digits
-        return ''.join(random.choice(characters) for _ in range(16))
+        return ''.join(secrets.choice(characters) for _ in range(16))
 
     def add_group(self, group):
         self.collection.insert_one({
