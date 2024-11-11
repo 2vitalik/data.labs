@@ -57,11 +57,11 @@
                             <label for="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}">
                                 {{ data.title }}
                             </label>
-                            <small>{{ data.teacher|safe }}</small>
+                            <small>{{ data.teacher|teachers }}</small>
                         </td>
                         <td class="align-middle">
                             {% if mode == 'view' %}
-                                {{ data.links }}
+                                {{ data.links|links }}
                             {% else %}
                                 <div class="form-group">
                                     <textarea name="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}" id="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}"

@@ -3,17 +3,6 @@ from collections import defaultdict
 from pprint import pprint
 
 
-def prettify_teacher(teacher_value):
-    return ''.join([
-        f'<span>{teacher}</span>'
-        for teacher in teacher_value.split(', ')
-    ])
-
-
-def prettify_links(links):
-    return links + 'todo'  # todo
-
-
 def convert_to_dict(dd):
     if isinstance(dd, defaultdict):
         dd = {k: convert_to_dict(v) for k, v in dd.items()}
@@ -31,8 +20,8 @@ def create_dict(entries):
 
         subjects[subject][category].append({
             'title': title,
-            'teacher': prettify_teacher(teacher),
-            'links': prettify_links(links),
+            'teacher': teacher,
+            'links': links,
         })
 
     subjects = convert_to_dict(subjects)
