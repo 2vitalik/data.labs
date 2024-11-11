@@ -14,6 +14,7 @@ def parse_subjects(prefix, subjects_text):
 
         short, long, subject_data = m.groups()
         if short in ['ФВ']:
+            subjects[short]['']['Пз'].update(range(1, 12))
             continue  # skip because no teachers there
 
         # print(f"{'=' * 100}\n{short} - {long}\n{'-' * 100}")
