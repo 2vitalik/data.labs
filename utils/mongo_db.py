@@ -39,10 +39,10 @@ class EntriesTable:
     def __init__(self, collection):
         self.collection = collection
 
-    def add_entries(self, entries):
+    def add_many(self, entries):
         self.collection.insert_many(entries)
 
-    def get_entries(self, semester, prefix):
+    def get(self, semester, prefix):
         return self.collection.find({
             'prefix': prefix,
             'semester': semester,

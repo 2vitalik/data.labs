@@ -112,4 +112,4 @@ def create_entries(prefix, subjects, category, case_all, groups_filter):
             entries.append(entry(*args))
 
     if entries:
-        db.entries.add_entries(entries)
+        db.entries.add_many(entries)
