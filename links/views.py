@@ -13,10 +13,12 @@ class LinksView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        semester, prefix = db.groups.get(self.kwargs['key'])
+        key = self.kwargs['key']
+        semester, prefix = db.groups.get(key)
         subjects = prepare_entries(db.entries.get(semester, prefix))
         subjects_names = db.subjects.get(semester, prefix)
         context.update({
+            'key': key,
             'semester': semester,
             'prefix': prefix,
             'subjects': subjects,
