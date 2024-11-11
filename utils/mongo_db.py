@@ -23,9 +23,9 @@ class GroupsTable:
 
     def add(self, prefix):
         self.collection.insert_one({
-            'prefix': prefix,
             'key': self.key(),
             'semester': settings.SEMESTER,
+            'prefix': prefix,
             'created_at': datetime.now(),
         })
 
