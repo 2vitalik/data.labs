@@ -77,6 +77,8 @@
             </table>
         {% endfor %}
         </div>
+    {% empty %}
+        Помилка: нічого не знайдено 😅
     {% endfor %}
 
     {% if mode == 'edit' and subjects %}
