@@ -13,6 +13,7 @@ class MongoDB:
         self.groups = GroupsTable(self.db['groups'])
         self.subjects = SubjectsTable(self.db['subjects'])
         self.entries = EntriesTable(self.db['entries'])
+        self.changes = ChangesTable(self.db['changes'])
 
 
 class GroupsTable:
@@ -101,6 +102,27 @@ class EntriesTable:
                         'links': new_value,
                     }
                 })
+                db.changes.add(semester, prefix, key, old_value, new_value)
+        # todo: send message to telegram
+
+
+class ChangesTable:
+    def __init__(self, collection):
+        self.collection = collection
+
+    def add(self, semester, prefix, key, old_value, new_value):
+        subject, category, title, teacher = key.split('|')
+        self.collection.insert_one({
+            'semester': semester,
+            'prefix': prefix,
+            'subject': subject,
+            'category': category,
+            'title': title,
+            'teacher': teacher,
+            'old_links': old_value,
+            'new_links': new_value,
+            'created_at': datetime.now(),
+        })
 
 
 db = MongoDB()
