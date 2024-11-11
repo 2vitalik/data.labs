@@ -48,10 +48,21 @@
                 {% for data in category_data %}
                     <tr>
                         <td style="width: 40%;">
-                            <div class="key">{{ data.title }}</div>
+                            <label for="{{ subject }}|{{ category }}|{{ data.title }}">
+                                {{ data.title }}
+                            </label>
                             <small>{{ data.teacher|safe }}</small>
                         </td>
-                        <td class="align-middle">{{ data.links }}</td>
+                        <td class="align-middle">
+                            {% if mode == 'view' %}
+                                {{ data.links }}
+                            {% else %}
+                                <div class="form-group">
+                                    <textarea name="{{ subject }}|{{ category }}|{{ data.title }}" id="{{ subject }}|{{ category }}|{{ data.title }}"
+                                              class="form-control" rows="2" placeholder="Введіть посилання тут...">{{ data.links }}</textarea>
+                                </div>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
