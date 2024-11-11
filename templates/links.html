@@ -18,14 +18,14 @@
 {% block content %}
     <h1 class="h3 mb-3">
         Потік {{ prefix }}
-        {% if mode == 'view' %}
+        {% if mode == 'view' and subjects %}
             (<a href="{% url 'links-edit' key %}">редагувати</a>)
-        {% else %}
+        {% elif mode == 'edit' %}
             <span class="text-danger">[режим редагування]</span>
         {% endif %}
     </h1>
 
-    {% if mode == 'edit' %}
+    {% if mode == 'edit' and subjects %}
     <form method="post">
         {% csrf_token %}
         {% include 'includes/buttons.html' %}
@@ -79,7 +79,7 @@
         </div>
     {% endfor %}
 
-    {% if mode == 'edit' %}
+    {% if mode == 'edit' and subjects %}
         {% include 'includes/buttons.html' %}
     </form>
     {% endif %}
