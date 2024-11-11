@@ -66,7 +66,7 @@ def get_prettified_title(kind, groups, case_all):
     if groups == case_all:
         return f'{kind}'
     else:
-        return f'{kind} ({groups})'
+        return f'{kind} ({groups} гр.)'
 
 
 def entry(prefix, category, subject, title, teacher='', kind='*', groups='*'):
