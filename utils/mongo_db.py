@@ -53,8 +53,8 @@ class EntriesTable:
 
     def get(self, semester, prefix):
         return self.collection.find({
-            'prefix': prefix,
             'semester': semester,
+            'prefix': prefix,
         })
 
 
