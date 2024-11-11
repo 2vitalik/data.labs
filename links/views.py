@@ -8,7 +8,7 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-class LinksView(TemplateView):
+class LinksBaseView(TemplateView):
     template_name = 'links.html'
 
     def get_context_data(self, **kwargs):
@@ -23,5 +23,23 @@ class LinksView(TemplateView):
             'prefix': prefix,
             'subjects': subjects,
             'subjects_names': subjects_names,
+        })
+        return context
+
+
+class LinksView(LinksBaseView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'mode': 'view',
+        })
+        return context
+
+
+class LinksEditView(LinksBaseView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'mode': 'edit',
         })
         return context
