@@ -9,7 +9,7 @@ class IndexView(TemplateView):
 
 
 class GroupView(TemplateView):
-    template_name = 'group.html'
+    template_name = 'links.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
