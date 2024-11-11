@@ -16,7 +16,11 @@
 {% block content %}
     <h1 class="h3 mb-3">
         Потік {{ prefix }}
-        (<a href="#">редагувати</a>)
+        {% if mode == 'view' %}
+            (<a href="{% url 'links-edit' key %}">редагувати</a>)
+        {% else %}
+            <span class="text-danger">[режим редагування]</span>
+        {% endif %}
     </h1>
 
     {% for subject, subject_data in subjects.items %}
