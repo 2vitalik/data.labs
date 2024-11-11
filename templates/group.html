@@ -2,50 +2,53 @@
 
 {% block css %}
 <style>
-    .key {
-        margin: 0;
-        padding: 0;
-        line-height: 0.8;
-    }
     small {
-        margin: 0;
-        padding: 0;
-        line-height: 0.8;
+        margin-top: 2px;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
         color: #bbb;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-    <h1 class="h3 mb-4">Потік {{ prefix }}</h1>
+    <h1 class="h3 mb-3">
+        Потік {{ prefix }}
+        (<a href="#">редагувати</a>)
+    </h1>
 
-    <h2 class="h5 mb-3">Предмет 1</h2>
+    {% for subject, subject_data in subjects.items %}
+        <h2 class="h5 mb-3 pt-3">📚 Предмет: <b>{{ subject }}</b></h2>
 
-    <div style="margin-left: 10px;">
-        <h3 class="h6">Англійський потік</h3>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="key">Загальне</div>
-                    </td>
-                    <td>https://dl.nure.ua/link0</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="key">Лекції</div>
-                        <small>Іванов І.І.</small>
-                    </td>
-                    <td>https://meet.google.com/link1</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="key">ПЗ (1-3)</div>
-                        <small>Петров П.П.</small>
-                    </td>
-                    <td>https://meet.google.com/link2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div style="margin-left: 10px;">
+        {% for category, category_data in subject_data.items %}
+            <h3 class="h6">
+                {% if category == 'eng' %}
+                    🇬🇧 Англійський потік
+                {% elif category == 'ukr' %}
+                    🇺🇦 Український потік
+                {% elif category == 'core' or category == 'alt' %}
+
+                {% else %}
+                    {{ category }}
+                {% endif %}
+            </h3>
+
+            <table class="table table-bordered mb-4">
+                <tbody>
+                {% for data in category_data %}
+                    <tr>
+                        <td style="width: 40%;">
+                            <div class="key">{{ data.title }}</div>
+                            <small>{{ data.teacher|safe }}</small>
+                        </td>
+                        <td class="align-middle">{{ data.links }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}
