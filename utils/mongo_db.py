@@ -25,6 +25,7 @@ class GroupsTable:
         self.collection.insert_one({
             'group': group,
             'key': self.key(),
+            'semester': settings.SEMESTER,
             'created_at': datetime.now(),
         })
 

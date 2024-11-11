@@ -128,6 +128,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+SEMESTER = '2024-p2'
 MONGO_CLUSTER = None  # Should be set in `local_settings.py` file
 
 
