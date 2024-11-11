@@ -8,7 +8,7 @@ from pymongo import MongoClient
 
 class MongoDB:
     def __init__(self):
-        self.client = MongoClient(settings.MONGO_CLUSTER)
+        self.client = MongoClient(settings.MONGO_CLUSTER_SECRET)
         self.db = self.client['nure_links']
         self.groups = GroupsTable(self.db['groups'])
         self.subjects = SubjectsTable(self.db['subjects'])
