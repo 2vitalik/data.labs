@@ -18,6 +18,12 @@
     .gray-links a:hover {
         color: #555;
     }
+    .silver-links, .silver-links a {
+        color: #ccc;
+    }
+    .silver-links a:hover {
+        color: #aaa;
+    }
 </style>
 {% endblock %}
 
@@ -89,13 +95,20 @@
                 </tbody>
             </table>
         {% endfor %}
+        {% if mode == 'edit' and not forloop.last %}
+            <div class="silver-links small text-end" style="margin-top: -15px;">
+                <a href="#save-bottom">↓ вниз до кнопки зберігання</a>
+            </div>
+        {% endif %}
         </div>
     {% empty %}
         Помилка: нічого не знайдено 😅
     {% endfor %}
 
     {% if mode == 'edit' and subjects %}
-        {% include 'includes/buttons.html' %}
+        <div id="save-bottom" class="mt-5">
+            {% include 'includes/buttons.html' %}
+        </div>
     </form>
     {% endif %}
 {% endblock %}
