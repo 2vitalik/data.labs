@@ -86,7 +86,7 @@
                             {% else %}
                                 <div class="form-group">
                                     <textarea name="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}" id="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}"
-                                              class="form-control" rows="2" placeholder="Введіть посилання тут...">{{ data.links }}</textarea>
+                                              class="form-control textarea" rows="2" placeholder="Введіть посилання тут...">{{ data.links }}</textarea>
                                 </div>
                             {% endif %}
                         </td>
@@ -111,4 +111,21 @@
         </div>
     </form>
     {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script>
+        const all_textarea = document.querySelectorAll('.textarea');
+
+        // Автоматичне збільшення висоти textarea
+        all_textarea.forEach(function(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+
+            textarea.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        });
+    </script>
 {% endblock %}
