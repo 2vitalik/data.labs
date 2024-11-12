@@ -12,6 +12,12 @@
         line-height: 1.2;
         color: #bbb;
     }
+    .gray-links, .gray-links a {
+        color: #888;
+    }
+    .gray-links a:hover {
+        color: #555;
+    }
 </style>
 {% endblock %}
 
@@ -32,10 +38,17 @@
     {% endif %}
 
     {% for subject, subject_data in subjects.items %}
-        <h2 class="h5 mb-3 pt-3">
+        <h2 id="{{ subject }}" class="h5 mb-0 pt-4">
             📚 <b>{{ subject }}</b>
             — {{ subjects_names|get:subject }}
         </h2>
+        <div class="gray-links small mb-2 text-end">
+            <a href="#{{ subject }}">#якір</a>
+            {% if mode == 'view' %}
+                ::
+                <a href="{% url 'links-edit' key %}#{{ subject }}">редагувати</a>
+            {% endif %}
+        </div>
 
         <div style="margin-left: 10px;">
         {% for category, category_data in subject_data.items %}
