@@ -95,6 +95,7 @@
                                 {{ data.links|links }}
                             {% else %}
                                 <div class="form-group">
+                                    <input type="hidden" name="old|{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}" value="{{ data.links }}">
                                     <textarea name="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}" id="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}"
                                               class="form-control textarea" rows="2" placeholder="Введіть посилання тут...">{{ data.links }}</textarea>
                                 </div>

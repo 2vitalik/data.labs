@@ -39,10 +39,23 @@ class LinksView(LinksBaseView):
 
 
 class LinksEditView(LinksBaseView):
+    def get_changes(self):
+        changes = {}
+        post = self.request.POST.copy()
+        post.pop('csrfmiddlewaretoken')
+        for key, value in post.items():
+            if key.startswith('old|'):
+                continue
+            old_value = post.get('old|' + key)
+            new_value = post.get(key)
+            if old_value != new_value:
+                changes[key] = new_value
+        return changes
+
     def post(self, request, *args, **kwargs):
         key = self.kwargs['key']
         semester, prefix = db.groups.get(key)
-        db.entries.edit(semester, prefix, request.POST)
+        db.entries.edit(semester, prefix, self.get_changes())
         return redirect('links', key=self.kwargs['key'])
 
     def get_context_data(self, **kwargs):
