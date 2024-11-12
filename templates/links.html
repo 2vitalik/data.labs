@@ -24,6 +24,16 @@
     .silver-links a:hover {
         color: #aaa;
     }
+    .form-control::placeholder {
+        color: #ccc;
+    }
+    textarea:placeholder-shown {
+        border: 1px solid #f5c6cb;
+        background-color: #fff8f8;
+    }
+    textarea:not(:placeholder-shown) {
+        border: 1px solid #80bdff;
+    }
 </style>
 {% endblock %}
 
