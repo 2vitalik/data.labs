@@ -5,7 +5,7 @@
 
 {% block css %}
 <style>
-    small {
+    .teachers {
         margin-top: 2px;
         display: flex;
         flex-direction: column;
@@ -78,7 +78,7 @@
                             <label for="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}">
                                 {{ data.title }}
                             </label>
-                            <small>{{ data.teacher|teachers }}</small>
+                            <div class="small teachers">{{ data.teacher|teachers }}</div>
                         </td>
                         <td class="align-middle">
                             {% if mode == 'view' %}
