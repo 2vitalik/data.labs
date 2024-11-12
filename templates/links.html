@@ -74,7 +74,7 @@
                 <tbody>
                 {% for data in category_data %}
                     <tr>
-                        <td style="width: 30%;">
+                        <td style="width: {% if mode == 'view' %}35%{% else %}30%{% endif %};">
                             <label for="{{ subject }}|{{ category }}|{{ data.title }}|{{ data.teacher }}">
                                 {{ data.title }}
                             </label>
