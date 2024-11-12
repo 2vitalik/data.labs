@@ -31,7 +31,7 @@
     <h1 class="h3 mb-3">
         Потік {{ prefix }}
         {% if mode == 'view' and subjects %}
-            (<a href="{% url 'links-edit' key %}">редагувати</a>)
+            [<a href="{% url 'links-edit' key %}">редагувати</a>]
         {% elif mode == 'edit' %}
             <span class="text-danger">[режим редагування]</span>
         {% endif %}
