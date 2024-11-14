@@ -82,7 +82,7 @@ class EntriesTable:
             data[f'{subject}|{category}|{title}|{teacher}'] = links
         return data
 
-    def edit(self, semester, prefix, new_data):
+    def edit(self, semester, prefix, new_data, user_args):
         old_data = self.get_data(semester, prefix)
         for key, new_value in new_data.items():
             if key == 'csrfmiddlewaretoken':
@@ -104,7 +104,8 @@ class EntriesTable:
                         'links': new_value,
                     }
                 })
-                db.changes.add(semester, prefix, key, old_value, new_value)
+                db.changes.add(semester, prefix, key, old_value, new_value,
+                               user_args)
         # todo: send message to telegram
 
 
@@ -112,7 +113,7 @@ class ChangesTable:
     def __init__(self, collection):
         self.collection = collection
 
-    def add(self, semester, prefix, key, old_value, new_value):
+    def add(self, semester, prefix, key, old_value, new_value, user_args):
         subject, category, title, teacher = key.split('|')
         self.collection.insert_one({
             'semester': semester,
@@ -123,6 +124,7 @@ class ChangesTable:
             'teacher': teacher,
             'old_links': old_value,
             'new_links': new_value,
+            **user_args,
             'created_at': datetime.now(),
         })
 

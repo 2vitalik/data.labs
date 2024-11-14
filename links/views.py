@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 
 from src.entries_tree import prepare_entries
+from src.track_user import get_user_args
 from utils.mongo_db import db
 
 
@@ -55,7 +56,8 @@ class LinksEditView(LinksBaseView):
     def post(self, request, *args, **kwargs):
         key = self.kwargs['key']
         semester, prefix = db.groups.get(key)
-        db.entries.edit(semester, prefix, self.get_changes())
+        user_args = get_user_args(request)
+        db.entries.edit(semester, prefix, self.get_changes(), user_args)
         return redirect('links', key=self.kwargs['key'])
 
     def get_context_data(self, **kwargs):
