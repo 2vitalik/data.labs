@@ -14,6 +14,7 @@ class MongoDB:
         self.subjects = SubjectsTable(self.db['subjects'])
         self.entries = EntriesTable(self.db['entries'])
         self.changes = ChangesTable(self.db['changes'])
+        self.visits = VisitsTable(self.db['visits'])
 
 
 class GroupsTable:
@@ -124,6 +125,18 @@ class ChangesTable:
             'teacher': teacher,
             'old_links': old_value,
             'new_links': new_value,
+            **user_args,
+            'created_at': datetime.now(),
+        })
+
+
+class VisitsTable:
+    def __init__(self, collection):
+        self.collection = collection
+
+    def add(self, path, user_args):
+        self.collection.insert_one({
+            'path': path,
             **user_args,
             'created_at': datetime.now(),
         })
