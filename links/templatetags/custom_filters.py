@@ -23,6 +23,9 @@ def make_link(href):
     if not href:
         return ''
 
+    if not href.startswith('http'):
+        return f'<i style="color: gray;">{href}</i>'
+
     prefix = ''
     title = href
 
