@@ -1,15 +1,18 @@
 from django.shortcuts import redirect
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 
 from src.entries_tree import prepare_entries
-from src.track_user import get_user_args
+from src.track_user import get_user_args, track_visit
 from utils.mongo_db import db
 
 
+@method_decorator(track_visit, name='dispatch')
 class IndexView(TemplateView):
     template_name = 'index.html'
 
 
+@method_decorator(track_visit, name='dispatch')
 class LinksBaseView(TemplateView):
     template_name = 'links.html'
 
