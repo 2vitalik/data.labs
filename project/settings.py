@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from os import environ, getenv
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3z6e%an4y!$w&1^!)9qb9ew!778nj2addaf(bt2j)#xqn3@5z2'
+SECRET_KEY = environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(getenv('DEBUG', False))
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -129,9 +133,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SEMESTER = '2024-p2'
-MONGO_CLUSTER_SECRET = None  # Should be set in `local_settings.py` file
+MONGO_CLUSTER_SECRET = environ["MONGO_CLUSTER_SECRET"]
 
 
+# TODO: Remove the requirement of `local_settings.py`, because of insecurity. Use environment variables instead.
 try:
     from project.local_settings import *
 except ImportError:
