@@ -6,8 +6,9 @@ from django.conf import settings
 
 
 class GroupsTable:
-    def __init__(self, collection):
-        self.collection = collection
+    def __init__(self, db):
+        self.db = db
+        self.collection = db.database['groups']
 
     def key(self):
         characters = string.ascii_letters + string.digits

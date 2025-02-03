@@ -1,8 +1,9 @@
 
 
 class SubjectsTable:
-    def __init__(self, collection):
-        self.collection = collection
+    def __init__(self, db):
+        self.db = db
+        self.collection = db.database['subjects']
 
     def add_many(self, subjects):
         self.collection.insert_many(subjects)

@@ -11,12 +11,12 @@ from mongo.collections.links.visits import VisitsTable
 class MongoDB:
     def __init__(self):
         self.client = MongoClient(settings.MONGO_CLUSTER_SECRET)
-        self.db = self.client['nure_links']
-        self.groups = GroupsTable(self.db['groups'])
-        self.subjects = SubjectsTable(self.db['subjects'])
-        self.entries = EntriesTable(self.db['entries'])
-        self.changes = ChangesTable(self.db['changes'])
-        self.visits = VisitsTable(self.db['visits'])
+        self.database = self.client['nure_links']
+        self.groups = GroupsTable(self)
+        self.subjects = SubjectsTable(self)
+        self.entries = EntriesTable(self)
+        self.changes = ChangesTable(self)
+        self.visits = VisitsTable(self)
 
 
 db = MongoDB()

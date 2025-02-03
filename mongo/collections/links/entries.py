@@ -1,7 +1,8 @@
 
 class EntriesTable:
-    def __init__(self, collection):
-        self.collection = collection
+    def __init__(self, db):
+        self.db = db
+        self.collection = db.database['entries']
 
     def add_many(self, entries):
         self.collection.insert_many(entries)

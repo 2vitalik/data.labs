@@ -2,8 +2,9 @@ from datetime import datetime
 
 
 class ChangesTable:
-    def __init__(self, collection):
-        self.collection = collection
+    def __init__(self, db):
+        self.db = db
+        self.collection = db.database['changes']
 
     def add(self, semester, prefix, key, old_value, new_value, user_args):
         subject, category, title, teacher = key.split('|')
