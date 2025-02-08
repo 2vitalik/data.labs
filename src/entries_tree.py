@@ -29,7 +29,7 @@ def create_dict(entries):
     return subjects
 
 
-def title_key(entry):
+def title_sort_key(entry):
     title = entry['title']
 
     for index, prefix in enumerate(['Загальне', 'Лекції', 'ПЗ', 'ЛБ']):
@@ -45,7 +45,7 @@ def title_key(entry):
     return priority, group_number, title
 
 
-def subject_key(pair):
+def subject_sort_key(pair):
     subject = pair[0]
     if subject in ['ІМ', 'ІМ1п', 'ІМ2п', 'ФВ']:
         return 3, subject
@@ -56,10 +56,10 @@ def subject_key(pair):
 
 def prepare_entries(entries):
     subjects = create_dict(entries)
-    subjects = dict(sorted(subjects.items(), key=subject_key))
+    subjects = dict(sorted(subjects.items(), key=subject_sort_key))
 
     for subject, data in subjects.items():
         for category in data.keys():
-            data[category] = list(sorted(data[category], key=title_key))
+            data[category] = list(sorted(data[category], key=title_sort_key))
 
     return subjects
