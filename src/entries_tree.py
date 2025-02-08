@@ -55,6 +55,27 @@ def subject_sort_key(pair):
 
 
 def prepare_entries(entries):
+    """
+    Prepare entries for displaying in the frontend (django templates).
+    {
+        'subject1': {
+            'eng':  [{'title': ..., 'teacher': ..., 'links': ...}],
+            'ukr':  [{'title': ..., 'teacher': ..., 'links': ...}],
+            'alt':  [{'title': ..., 'teacher': ..., 'links': ...}],
+            'core': [{'title': ..., 'teacher': ..., 'links': ...}],
+        },
+        'subject2': {
+            ...
+        },
+        ...
+    }
+
+    :param entries:
+        List of links entries from the database
+
+    :return:
+        Dictionary of subjects with lists of categories data
+    """
     subjects = create_dict(entries)
     subjects = dict(sorted(subjects.items(), key=subject_sort_key))
 
