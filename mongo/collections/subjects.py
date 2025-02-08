@@ -17,4 +17,3 @@ class SubjectsTable:
             subject.get('short'): subject.get('long')
             for subject in subjects
         }
-
