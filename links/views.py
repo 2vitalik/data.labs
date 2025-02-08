@@ -2,8 +2,8 @@ from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 
-from src.entries_tree import prepare_entries
-from src.track_user import get_user_args, track_visit
+from links.src.entries_tree import prepare_entries
+from links.src.track_user import get_user_args, track_visit
 from mongo.db import db
 
 
