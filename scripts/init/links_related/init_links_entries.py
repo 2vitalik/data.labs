@@ -1,9 +1,7 @@
-import utils.django_bin
-
-from scripts.init.links_entries_steps.s1_read_data import read_data
-from scripts.init.subjects.parse import parse_subjects
-from scripts.init.init_subjects import create_subjects
-from scripts.init.links_entries_steps.s4_create_links_entries import create_links_entries
+from scripts.init.links_related.links_entries_steps.s1_read_data import read_data
+from scripts.init.links_related.subjects.parse import parse_subjects
+from scripts.init.links_related.init_subjects import create_subjects
+from scripts.init.links_related.links_entries_steps.s4_create_links_entries import create_links_entries
 
 
 def init_links_entries():
