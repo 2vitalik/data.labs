@@ -1,11 +1,11 @@
 from django.conf import settings
 from pymongo import MongoClient
 
-from mongo.collections.links.changes import ChangesTable
-from mongo.collections.links.entries import EntriesTable
-from mongo.collections.links.groups import GroupsTable
-from mongo.collections.links.subjects import SubjectsTable
-from mongo.collections.links.visits import VisitsTable
+from mongo.collections.changes import ChangesTable
+from mongo.collections.entries import EntriesTable
+from mongo.collections.groups import GroupsTable
+from mongo.collections.subjects import SubjectsTable
+from mongo.collections.visits import VisitsTable
 
 
 class MongoDB:
