@@ -1,5 +1,5 @@
 import utils.django_bin
-from utils.mongo_db import db
+from mongo.db import db
 
 
 def init_groups():

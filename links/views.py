@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from src.entries_tree import prepare_entries
 from src.track_user import get_user_args, track_visit
-from utils.mongo_db import db
+from mongo.db import db
 
 
 @method_decorator(track_visit, name='dispatch')

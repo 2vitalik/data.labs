@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.conf import settings
 
-from utils.mongo_db import db
+from mongo.db import db
 
 
 def create_subjects(prefix, subjects_names):

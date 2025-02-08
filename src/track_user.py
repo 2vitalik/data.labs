@@ -1,6 +1,6 @@
 from functools import wraps
 
-from utils.mongo_db import db
+from mongo.db import db
 
 
 def get_user_args(request):

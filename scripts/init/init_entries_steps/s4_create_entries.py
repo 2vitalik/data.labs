@@ -3,7 +3,7 @@ from pprint import pprint
 
 from django.conf import settings
 
-from utils.mongo_db import db
+from mongo.db import db
 
 
 def join_similar_entries(subject_data):
