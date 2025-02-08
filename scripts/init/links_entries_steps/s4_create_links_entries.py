@@ -69,7 +69,7 @@ def get_prettified_title(kind, groups, case_all):
         return f'{kind} ({groups} гр.)'
 
 
-def entry(prefix, category, subject, title, teacher='', kind='*', groups='*'):
+def links_entry(prefix, category, subject, title, teacher='', kind='*', groups='*'):
     return {
         'semester': settings.SEMESTER,
         'prefix': prefix,
@@ -84,10 +84,10 @@ def entry(prefix, category, subject, title, teacher='', kind='*', groups='*'):
     }
 
 
-def create_entries(prefix, subjects, category, case_all, groups_filter):
+def create_links_entries(prefix, subjects, category, case_all, groups_filter):
     print()
     print(prefix, category)
-    entries = []
+    links_entries = []
 
     for subject, subject_data in subjects.items():
         subject_data = join_similar_entries(subject_data)
@@ -103,18 +103,18 @@ def create_entries(prefix, subjects, category, case_all, groups_filter):
                 title = get_prettified_title(kind, groups, case_all)
                 args = (prefix, category, subject, title, teacher, kind, groups)
                 print(*args)
-                entries.append(entry(*args))
+                links_entries.append(links_entry(*args))
                 added += 1
 
         if added > 1:
             args = (prefix, category, subject, 'Загальне')
             print(*args)
-            entries.append(entry(*args))
+            links_entries.append(links_entry(*args))
 
-    if entries:
+    if links_entries:
         db.links_entries.collection.delete_many({
             'semester': settings.SEMESTER,
             'prefix': prefix,
             'category': category,
         })
-        db.links_entries.add_many(entries)
+        db.links_entries.add_many(links_entries)
