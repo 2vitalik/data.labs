@@ -30,6 +30,15 @@ def create_dict(entries):
     return subjects
 
 
+def subject_sort_key(pair):
+    subject = pair[0]
+    if subject in ['ІМ', 'ІМ1п', 'ІМ2п', 'ФВ']:
+        return 3, subject
+    if subject.startswith('*'):
+        return 2, subject
+    return 1, subject
+
+
 def title_sort_key(entry):
     title = entry['title']
 
@@ -44,15 +53,6 @@ def title_sort_key(entry):
     group_number = int(m.group(1)) if m else 0
 
     return priority, group_number, title
-
-
-def subject_sort_key(pair):
-    subject = pair[0]
-    if subject in ['ІМ', 'ІМ1п', 'ІМ2п', 'ФВ']:
-        return 3, subject
-    if subject.startswith('*'):
-        return 2, subject
-    return 1, subject
 
 
 def prepare_entries(entries):
