@@ -3,14 +3,15 @@ from collections import defaultdict
 from pprint import pprint
 
 
-def convert_to_dict(dd):
+def defaultdict_to_dict(dd):
     if isinstance(dd, defaultdict):
-        dd = {k: convert_to_dict(v) for k, v in dd.items()}
+        dd = {k: defaultdict_to_dict(v) for k, v in dd.items()}
     return dd
 
 
 def create_dict(entries):
     subjects = defaultdict(lambda: defaultdict(list))
+
     for entry in entries:
         subject = entry['subject']
         category = entry['category']
@@ -24,7 +25,7 @@ def create_dict(entries):
             'links': links,
         })
 
-    subjects = convert_to_dict(subjects)
+    subjects = defaultdict_to_dict(subjects)
     # pprint(subjects)
     return subjects
 
