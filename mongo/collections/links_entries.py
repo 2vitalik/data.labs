@@ -1,8 +1,8 @@
 
-class EntriesTable:
+class LinksEntriesTable:
     def __init__(self, db):
         self.db = db
-        self.collection = db.database['entries']
+        self.collection = db.database['links_entries']
 
     def add_many(self, entries):
         self.collection.insert_many(entries)

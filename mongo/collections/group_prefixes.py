@@ -5,10 +5,10 @@ from datetime import datetime
 from django.conf import settings
 
 
-class GroupsTable:
+class GroupPrefixesTable:
     def __init__(self, db):
         self.db = db
-        self.collection = db.database['groups']
+        self.collection = db.database['group_prefixes']
 
     def key(self):
         characters = string.ascii_letters + string.digits

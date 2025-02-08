@@ -1,10 +1,10 @@
 from datetime import datetime
 
 
-class ChangesTable:
+class LinksChangesTable:
     def __init__(self, db):
         self.db = db
-        self.collection = db.database['changes']
+        self.collection = db.database['links_changes']
 
     def add(self, semester, prefix, key, old_value, new_value, user_args):
         subject, category, title, teacher = key.split('|')
