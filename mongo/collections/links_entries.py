@@ -47,6 +47,6 @@ class LinksEntriesTable:
                         'links': new_value,
                     }
                 })
-                self.db.changes.add(semester, prefix, key, old_value, new_value,
-                                    user_args)
+                self.db.links_changes.add(semester, prefix, key, old_value, new_value,
+                                          user_args)
         # todo: send message to telegram

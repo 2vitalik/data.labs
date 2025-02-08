@@ -12,10 +12,10 @@ class MongoDB:
     def __init__(self):
         self.client = MongoClient(settings.MONGO_CLUSTER_SECRET)
         self.database = self.client['nure_links']
-        self.groups = GroupPrefixesTable(self)
+        self.group_prefixes = GroupPrefixesTable(self)
         self.subjects = SubjectsTable(self)
-        self.entries = LinksEntriesTable(self)
-        self.changes = LinksChangesTable(self)
+        self.links_entries = LinksEntriesTable(self)
+        self.links_changes = LinksChangesTable(self)
         self.visits = VisitsTable(self)
 
 

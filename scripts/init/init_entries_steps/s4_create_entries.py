@@ -112,9 +112,9 @@ def create_entries(prefix, subjects, category, case_all, groups_filter):
             entries.append(entry(*args))
 
     if entries:
-        db.entries.collection.delete_many({
+        db.links_entries.collection.delete_many({
             'semester': settings.SEMESTER,
             'prefix': prefix,
             'category': category,
         })
-        db.entries.add_many(entries)
+        db.links_entries.add_many(entries)

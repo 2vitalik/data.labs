@@ -12,7 +12,7 @@ def init_groups():
         'ІПЗм-23',
     ]
     for prefix in prefixes:
-        db.groups.add(prefix)
+        db.group_prefixes.add(prefix)
 
 
 if __name__ == '__main__':
