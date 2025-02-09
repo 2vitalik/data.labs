@@ -1,8 +1,8 @@
 import utils.django_bin
 
 from mongo.db import db
-from scripts.init.links_related.links_entries_steps.s1_read_data import read_subjects_texts
-from scripts.init.links_related.subjects.parse import parse_subjects
+from scripts.init.links_related.src.read_texts import read_subjects_texts
+from scripts.init.links_related.src.parse_subjects import parse_subjects
 
 
 def init_subjects():

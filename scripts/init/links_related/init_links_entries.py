@@ -1,8 +1,8 @@
 import utils.django_bin
 
-from scripts.init.links_related.links_entries_steps.s1_read_data import read_subjects_texts, read_groups_splits
-from scripts.init.links_related.links_entries_steps.s4_create_links_entries import create_links_entries
-from scripts.init.links_related.subjects.parse import parse_subjects
+from scripts.init.links_related.src.read_texts import read_subjects_texts, read_groups_splits
+from scripts.init.links_related.src.parse_subjects import parse_subjects
+from scripts.init.links_related.src.create_links_entries import create_links_entries
 
 
 def init_links_entries():
