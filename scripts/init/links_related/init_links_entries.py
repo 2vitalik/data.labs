@@ -9,7 +9,7 @@ def init_links_entries():
     groups_splits, subjects_texts = read_data()
 
     for prefix, subjects_text in subjects_texts.items():
-        subjects_data, subjects_names = parse_subjects(prefix, subjects_text)
+        subjects_data, _ = parse_subjects(prefix, subjects_text)
 
         split, total = groups_splits[prefix]
 

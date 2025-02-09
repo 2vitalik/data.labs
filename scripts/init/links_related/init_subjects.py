@@ -26,7 +26,7 @@ def init_subjects():
     groups_splits, subjects_texts = read_data()
 
     for prefix, subjects_text in subjects_texts.items():
-        subjects, subjects_names = parse_subjects(prefix, subjects_text)
+        _, subjects_names = parse_subjects(prefix, subjects_text)
         create_subjects(prefix, subjects_names)
 
 
