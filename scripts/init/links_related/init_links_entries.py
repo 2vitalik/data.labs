@@ -1,5 +1,6 @@
 import utils.django_bin
 
+from mongo.db import db
 from scripts.init.links_related.src.read_texts import read_subjects_texts, read_groups_splits
 from scripts.init.links_related.src.parse_subjects import parse_subjects
 from scripts.init.links_related.src.create_links_entries import create_links_entries
@@ -7,12 +8,11 @@ from scripts.init.links_related.src.create_links_entries import create_links_ent
 
 def init_links_entries():
     subjects_texts = read_subjects_texts()
-    groups_splits = read_groups_splits()
 
     for prefix, subjects_text in subjects_texts.items():
         subjects_data, _ = parse_subjects(prefix, subjects_text)
 
-        split, total = groups_splits[prefix]
+        split, total = db.group_prefixes.get_split_total(prefix)
 
         if split:
             create_links_entries(prefix, subjects_data, 'eng',

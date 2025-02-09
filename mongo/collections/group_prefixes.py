@@ -26,6 +26,19 @@ class GroupPrefixesTable:
 
     def get_semester_prefix(self, key):
         group = self.collection.find_one({'key': key})
+
         if not group:
             return None, None
+
         return group.get('semester'), group.get('prefix')
+
+    def get_split_total(self, prefix):
+        group = self.collection.find_one({
+            'semester': settings.SEMESTER,
+            'prefix': prefix,
+        })
+
+        if not group:
+            raise Exception(f'Group prefix not found: "{prefix}"')
+
+        return group.get('split'), group.get('total')
