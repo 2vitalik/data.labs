@@ -34,7 +34,3 @@ def read_subjects_texts():
         subjects[prefix] = group_data
 
     return subjects
-
-
-def read_data():
-    return read_groups_splits(), read_subjects_texts()

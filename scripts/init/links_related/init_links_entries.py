@@ -1,12 +1,13 @@
 import utils.django_bin
 
-from scripts.init.links_related.links_entries_steps.s1_read_data import read_data
+from scripts.init.links_related.links_entries_steps.s1_read_data import read_subjects_texts, read_groups_splits
 from scripts.init.links_related.links_entries_steps.s4_create_links_entries import create_links_entries
 from scripts.init.links_related.subjects.parse import parse_subjects
 
 
 def init_links_entries():
-    groups_splits, subjects_texts = read_data()
+    subjects_texts = read_subjects_texts()
+    groups_splits = read_groups_splits()
 
     for prefix, subjects_text in subjects_texts.items():
         subjects_data, _ = parse_subjects(prefix, subjects_text)
