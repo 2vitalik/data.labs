@@ -132,7 +132,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SEMESTER = '2024-p2'
+SEMESTER = '2025-p1'  # todo: move to `conf.py`?
 MONGO_CLUSTER_SECRET = environ["MONGO_CLUSTER_SECRET"]
 
 
