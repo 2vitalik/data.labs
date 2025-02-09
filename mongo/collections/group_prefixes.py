@@ -14,11 +14,13 @@ class GroupPrefixesTable:
         characters = string.ascii_letters + string.digits
         return ''.join(secrets.choice(characters) for _ in range(16))
 
-    def add(self, prefix):
+    def add(self, prefix, split, total):
         self.collection.insert_one({
             'key': self.key(),
             'semester': settings.SEMESTER,
             'prefix': prefix,
+            'split': split,
+            'total': total,
             'created_at': datetime.now(),
         })
 

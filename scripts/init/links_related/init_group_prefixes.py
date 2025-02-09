@@ -1,18 +1,15 @@
 import utils.django_bin
+
 from mongo.db import db
+from scripts.init.links_related.src.read_texts import read_groups_splits
 
 
 def init_group_prefixes():
-    prefixes = [
-        'ПЗПІ-24',
-        'ПЗПІ-23',
-        'ПЗПІ-22',
-        'ПЗПІ-21',
-        'ІПЗм-24',
-        'ІПЗм-23',
-    ]
-    for prefix in prefixes:
-        db.group_prefixes.add(prefix)
+    groups_splits = read_groups_splits()
+
+    for prefix, (split, total) in groups_splits.items():
+        print('Adding:', prefix, split, total)
+        db.group_prefixes.add(prefix, split, total)
 
 
 if __name__ == '__main__':
