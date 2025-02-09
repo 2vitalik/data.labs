@@ -22,7 +22,7 @@ class GroupPrefixesTable:
             'created_at': datetime.now(),
         })
 
-    def get(self, key):
+    def get_semester_prefix(self, key):
         group = self.collection.find_one({'key': key})
         if not group:
             return None, None

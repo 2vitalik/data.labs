@@ -19,7 +19,7 @@ class LinksBaseView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         key = self.kwargs['key']
-        semester, prefix = db.group_prefixes.get(key)
+        semester, prefix = db.group_prefixes.get_semester_prefix(key)
         if prefix:
             subjects = prepare_entries(db.links_entries.get(semester, prefix))
             subjects_names = db.subjects.get(semester, prefix)
@@ -58,7 +58,7 @@ class LinksEditView(LinksBaseView):
 
     def post(self, request, *args, **kwargs):
         key = self.kwargs['key']
-        semester, prefix = db.group_prefixes.get(key)
+        semester, prefix = db.group_prefixes.get_semester_prefix(key)
         user_args = get_user_args(request)
         db.links_entries.edit(semester, prefix, self.get_changes(), user_args)
         return redirect('links', key=self.kwargs['key'])
