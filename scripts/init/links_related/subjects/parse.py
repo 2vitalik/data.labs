@@ -4,7 +4,7 @@ from pprint import pprint
 
 
 def parse_subjects(prefix, subjects_text):
-    subjects = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
+    subjects_data = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
     subjects_names = {}
 
     for subject_line in subjects_text.split('\n'):
@@ -17,7 +17,7 @@ def parse_subjects(prefix, subjects_text):
         if short not in subjects_names:
             subjects_names[short] = long
         if short in ['ФВ']:
-            subjects[short]['']['Пз'].update(range(1, 12))
+            subjects_data[short]['']['Пз'].update(range(1, 12))
             continue  # skip because no teachers there
 
         # print(f"{'=' * 100}\n{short} - {long}\n{'-' * 100}")
@@ -27,13 +27,13 @@ def parse_subjects(prefix, subjects_text):
             if not part:
                 continue
 
-            process_part(subjects, prefix, short, long, part)
+            process_part(subjects_data, prefix, short, long, part)
 
-    # pprint(subjects)
-    return subjects, subjects_names
+    # pprint(subjects_data)
+    return subjects_data, subjects_names
 
 
-def process_part(subjects, prefix, short, long, part):
+def process_part(subjects_data, prefix, short, long, part):
 
     m = re.fullmatch(r'(?P<kind>Лк|Пз|Лб|Конс|Екз|Зал) '
                      r'\(\d+\) - '
@@ -84,4 +84,4 @@ def process_part(subjects, prefix, short, long, part):
     teachers = ', '.join(set(teachers.split(', ')))
 
     # print(teachers, kind, groups)
-    subjects[short][teachers][kind].update(groups)
+    subjects_data[short][teachers][kind].update(groups)
