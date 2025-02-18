@@ -29,3 +29,10 @@ class SubjectsTable:
             subject.get('short'): subject.get('long')
             for subject in subjects
         }
+
+    def exists(self, prefix, short):
+        return self.collection.find_one({
+            'semester': settings.SEMESTER,
+            'prefix': prefix,
+            'short': short,
+        })

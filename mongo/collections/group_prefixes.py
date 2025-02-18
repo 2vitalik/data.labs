@@ -42,3 +42,9 @@ class GroupPrefixesTable:
             raise Exception(f'Group prefix not found: "{prefix}"')
 
         return group.get('split'), group.get('total')
+
+    def exists(self, prefix):
+        return self.collection.find_one({
+            'semester': settings.SEMESTER,
+            'prefix': prefix,
+        })
